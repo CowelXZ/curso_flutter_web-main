@@ -24,7 +24,7 @@ class _LandingViewState extends State<LandingView> {
             decoration: BoxDecoration(
               // color: Colors.white,
               border: Border(
-                right: BorderSide(color: Colors.grey.shade300, width: 0.5),
+                right: BorderSide(color: const Color.fromARGB(255, 238, 0, 0), width: 0.5),
               ),
             ),
             child: Row(
@@ -134,14 +134,14 @@ class _LandingViewState extends State<LandingView> {
               SizedBox(
                 width: 60,
                 height: 60,
-                child: Icon(icon, color: Colors.grey[800], size: 24),
+                child: Icon(icon, color: const Color.fromARGB(255, 52, 165, 240), size: 24),
               ),
               if (isOpen) ...[
                 const SizedBox(width: 10), // Espacio entre icono y texto
                 Text(
                   title,
                   style: TextStyle(
-                    color: Colors.grey[800],
+                    color: const Color.fromARGB(255, 51, 4, 4),
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
