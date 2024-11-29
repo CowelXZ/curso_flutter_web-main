@@ -24,7 +24,7 @@ class _LandingViewState extends State<LandingView> {
             decoration: BoxDecoration(
               // color: Colors.white,
               border: Border(
-                right: BorderSide(color: const Color.fromARGB(255, 238, 0, 0), width: 0.5),
+                right: BorderSide(color: const Color.fromARGB(255, 173, 25, 25), width: 0.5),
               ),
             ),
             child: Row(
@@ -35,7 +35,7 @@ class _LandingViewState extends State<LandingView> {
                   width: 60,
                   child: IconButton(
                     icon: Icon(isOpen ? Icons.arrow_back : Icons.menu),
-                    color: Colors.grey[800],
+                    color: const Color.fromARGB(255, 43, 9, 9),
                     onPressed: () {
                       setState(() {
                         isOpen = !isOpen;
@@ -52,24 +52,25 @@ class _LandingViewState extends State<LandingView> {
                 ),
                 _buildMenuItem(
                   Icons.edit_note_rounded,
-                  "Drafts",
+                  "Diseños",
                 ),
                 _buildMenuItem(
                   Icons.switch_access_shortcut_add_rounded,
-                  "Shared with me",
+                  "Compartir conmigo? raro",
                 ),
                 const Spacer(),
                 _buildMenuItem(
                   Icons.settings,
-                  "Settings",
+                  "Settings, asi de simple",
                 ),
               ],
             ),
           ),
           // Contenido principal
           const Expanded(
-            
-              child: Row(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -114,7 +115,7 @@ class _LandingViewState extends State<LandingView> {
                 ],
               ),
             ),
-          
+          ),
         ],
       ),
     );
@@ -134,14 +135,14 @@ class _LandingViewState extends State<LandingView> {
               SizedBox(
                 width: 60,
                 height: 60,
-                child: Icon(icon, color: const Color.fromARGB(255, 52, 165, 240), size: 24),
+                child: Icon(icon, color: const Color.fromARGB(255, 77, 13, 13), size: 24),
               ),
               if (isOpen) ...[
                 const SizedBox(width: 10), // Espacio entre icono y texto
                 Text(
                   title,
                   style: TextStyle(
-                    color: const Color.fromARGB(255, 51, 4, 4),
+                    color: const Color.fromARGB(255, 88, 26, 26),
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
