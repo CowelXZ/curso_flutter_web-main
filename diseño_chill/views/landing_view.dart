@@ -9,33 +9,41 @@ class LandingView extends StatefulWidget {
 }
 
 class _LandingViewState extends State<LandingView> {
-  bool isOpen = false; // Estado para abrir/cerrar la barra lateral
+  bool isOpen = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(//Esto lo cambie de Column a Row, evidentemente queda mal, pero ni modo, no se 
-      //me ocurrio otro cambio en widget notable que no haga que esto explote profe
+      body: Row(
         children: [
-          // Barra lateral
           AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 700), //Mas leeeeeentoooooo
             width: isOpen ? 210 : 60,
             decoration: BoxDecoration(
-              // color: Colors.white,
+              //Cambie el color de fondo, por, no se, podia
+              color: isOpen
+                  ? const Color.fromARGB(255, 33, 33, 235)
+                  : const Color.fromARGB(255, 230, 106, 24),
               border: Border(
-                right: BorderSide(color: const Color.fromARGB(255, 173, 25, 25), width: 0.5),
+                right: BorderSide(
+                  color: const Color.fromARGB(255, 47, 141, 204),
+                  width: 0.5,
+                ),
               ),
             ),
-            child: Row(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 60,
                   width: 60,
                   child: IconButton(
-                    icon: Icon(isOpen ? Icons.arrow_back : Icons.menu),
-                    color: const Color.fromARGB(255, 43, 9, 9),
+                    //Door...xd
+                    //Book...xd
+                    icon: Icon(isOpen
+                        ? Icons.door_sliding_rounded
+                        : Icons.book_outlined),
+                    color: Colors.grey[800],
                     onPressed: () {
                       setState(() {
                         isOpen = !isOpen;
@@ -45,9 +53,11 @@ class _LandingViewState extends State<LandingView> {
                     },
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(
+                  height: 20,
+                ),
                 _buildMenuItem(
-                  Icons.chair_rounded, //Cambio Icono
+                  Icons.book,
                   "Proyectos",
                 ),
                 _buildMenuItem(
@@ -56,16 +66,18 @@ class _LandingViewState extends State<LandingView> {
                 ),
                 _buildMenuItem(
                   Icons.switch_access_shortcut_add_rounded,
-                  "Compartir conmigo? raro",
+                  "Compartir",
                 ),
                 const Spacer(),
                 _buildMenuItem(
                   Icons.settings,
-                  "Settings, asi de simple",
+                  "Ajsutes",
+                  //Jejeje, esta mal escrito adrede
                 ),
               ],
             ),
           ),
+
           // Contenido principal
           const Expanded(
             child: Padding(
@@ -77,7 +89,7 @@ class _LandingViewState extends State<LandingView> {
                   Row(
                     children: [
                       Text(
-                        'Espacio de Trabajo',
+                        'Side Hustle',
                         style: TextStyle(
                           fontSize: 35,
                           fontWeight: FontWeight.bold,
@@ -85,31 +97,54 @@ class _LandingViewState extends State<LandingView> {
                       ),
                       SizedBox(width: 20),
                       Icon(
-                        Icons.keyboard_arrow_down,
+                        //CAMBIO
+                        Icons.macro_off_rounded,
                         size: 30,
                       ),
                       Spacer(),
                       Icon(
-                        //icono de un link
-                        //Je, ya no lo es
-                        Icons.bike_scooter,
-                        size: 60,
+                        //CAMBIOOO
+                        Icons.macro_off_rounded,
+                        size: 30,
                       ),
                       SizedBox(width: 20),
                       Text(
-                        'Bicicleta',
+                        'Share',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       SizedBox(width: 20),
-                      //icono de 3 puntos acostado
-                      //Nuevamente, ya no lo es
+                      //ADIVINO... OTRO CAMBIOOO
                       Icon(
-                        Icons.man_outlined,
+                        Icons.my_location_rounded,
                         size: 30,
                       ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'No creo poder editar otros widgets (sin arruinar la funcionalidad)'
+                        ' pero si puedo crear nuevos, cuenta?',
+                        style:
+                            TextStyle(color: Color.fromARGB(232, 7, 177, 120)),
+                      ),
+                      const SizedBox(width: 40),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Este es para acompletar la regla de 2 widgets,'
+                        ' mas vale que cuente pq tuve que reiniciar mis demas cambios',
+                        style:
+                            TextStyle(color: Color.fromARGB(232, 7, 177, 120)),
+                      ),
+                      const SizedBox(width: 40),
                     ],
                   ),
                 ],
@@ -123,9 +158,8 @@ class _LandingViewState extends State<LandingView> {
 
   // Widget para los elementos del menú
   Widget _buildMenuItem(IconData icon, String title) {
-    return Container( //Haber, se supone que era un SingleChildScrollView, pero ni se usaba pq no metemos elementos
-                      //Entonces, no se si me lo va a contar como cambio de Widget
-      //scrollDirection: Axis.horizontal,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
       child: InkWell(
         onTap: () {},
         child: SizedBox(
@@ -135,14 +169,14 @@ class _LandingViewState extends State<LandingView> {
               SizedBox(
                 width: 60,
                 height: 60,
-                child: Icon(icon, color: const Color.fromARGB(255, 77, 13, 13), size: 24),
+                child: Icon(icon, color: Colors.grey[800], size: 24),
               ),
               if (isOpen) ...[
                 const SizedBox(width: 10), // Espacio entre icono y texto
                 Text(
                   title,
                   style: TextStyle(
-                    color: const Color.fromARGB(255, 88, 26, 26),
+                    color: Colors.grey[800],
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
